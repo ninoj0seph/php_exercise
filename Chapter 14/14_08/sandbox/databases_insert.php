@@ -1,10 +1,10 @@
 <?php
   // 1. Create a database connection
-  $dbhost = "localhost";
-  $dbuser = "widget_cms";
-  $dbpass = "secretpassword";
-  $dbname = "widget_corp";
-  $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+$dbHost = 'localhost';
+$dbUser = 'root';
+$dbPass = 'root';
+$dbName = 'widget_corp';
+$connection = mysqli_connect($dbHost, $dbPass, $dbPass, 'sgt');
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
     die("Database connection failed: " . 
@@ -15,10 +15,13 @@
 ?>
 <?php
 	// Often these are form values in $_POST
-	$menu_name = "Edit me";
+	$menu_name = "Not your'z'sw'ec'zsqw";
 	$position = 4;
 	$visible = 1;
-	
+
+	$menu_name = mysqli_real_escape_string($connection,$menu_name);
+	var_dump($menu_name);
+
 	// 2. Perform database query
 	$query  = "INSERT INTO subjects (";
 	$query .= "  menu_name, position, visible";
